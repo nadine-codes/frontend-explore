@@ -43,7 +43,7 @@ export function Layout() {
       </main>
       <footer className="site-footer">
         <span>Built with React, TypeScript and Vite.</span>
-        <span className="mono">Transmission ends · {new Date().getFullYear()}</span>
+        <span className="mono">New patterns land regularly · {new Date().getFullYear()}</span>
       </footer>
     </>
   );
