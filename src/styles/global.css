@@ -241,6 +241,13 @@ h3 {
   font-size: 13.5px;
 }
 
+/* On phones the copyright gets its own line. */
+@media (max-width: 640px) {
+  .site-footer__copyright {
+    display: block;
+  }
+}
+
 /* ---------- Shared page pieces ---------- */
 
 .page {

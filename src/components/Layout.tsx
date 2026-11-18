@@ -43,7 +43,10 @@ export function Layout() {
       </main>
       <footer className="site-footer">
         <span>Built with React, TypeScript and Vite.</span>
-        <span className="mono">New patterns launch regularly 🚀 © {new Date().getFullYear()} Frontend Explore</span>
+        <span className="mono">
+          New patterns launch regularly 🚀{' '}
+          <span className="site-footer__copyright">© {new Date().getFullYear()} Frontend Explore</span>
+        </span>
       </footer>
     </>
   );
