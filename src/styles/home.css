@@ -27,99 +27,29 @@
     min-height: 0;
     padding-top: 24px;
   }
-  .orbits {
+  .home-orbits {
     order: -1;
-    width: min(400px, 92%) !important;
+    width: min(400px, 92%);
   }
 }
 
-/* ---------- Orbit system ---------- */
+/* ---------- Orbit system (see components/OrbitSystem) ---------- */
 
-.orbits {
-  position: relative;
+.home-orbits {
+  --dot-size: clamp(12px, 2.6vw, 18px);
   width: min(540px, 100%);
-  aspect-ratio: 1;
   justify-self: center;
   margin: 24px auto;
 }
 
-.orbits__sun {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 22%;
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(circle at 35% 30%, #fff3d6, #ffb35c 35%, #ff6ad5 75%, #8b6cff);
-  box-shadow:
-    0 0 40px rgba(255, 170, 90, 0.55),
-    0 0 120px rgba(255, 106, 213, 0.35);
-  animation: pulse 6s ease-in-out infinite;
+.home-orbits .orbit__label {
+  font-size: clamp(11px, 1.8vw, 13px);
 }
 
-.orbits__sun span {
+.home-orbits__mark {
   font-size: clamp(14px, 3vw, 22px);
   font-weight: 600;
   color: rgba(40, 14, 60, 0.85);
-}
-
-/* Centered with inset (not transform) so the spin rotates around the middle. */
-.orbits__ring {
-  position: absolute;
-  inset: calc((100% - var(--size)) / 2);
-  border-radius: 50%;
-  border: 1px dashed rgba(160, 170, 230, 0.22);
-  animation: spin var(--duration) linear infinite;
-}
-
-/* A full-size arm rotated to the planet's starting angle; the planet sits at its top. */
-.orbits__arm {
-  position: absolute;
-  inset: 0;
-  transform: rotate(var(--angle));
-}
-
-.orbits__planet {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: clamp(12px, 2.6vw, 18px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fff, var(--color) 55%);
-  box-shadow: 0 0 18px var(--color);
-  transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle)));
-}
-
-/* Spins the opposite way at the same speed as its ring, so the text stays upright. */
-.orbits__label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  padding-top: clamp(30px, 6vw, 40px);
-  font: 500 clamp(11px, 1.8vw, 13px) var(--font-mono);
-  color: var(--ink);
-  white-space: nowrap;
-  text-shadow: 0 1px 8px var(--space-0);
-  animation: spin var(--duration) linear infinite reverse;
-}
-
-@keyframes spin {
-  to {
-    rotate: 360deg;
-  }
-}
-
-@keyframes pulse {
-  50% {
-    box-shadow:
-      0 0 56px rgba(255, 170, 90, 0.7),
-      0 0 160px rgba(255, 106, 213, 0.45);
-  }
 }
 
 /* ---------- Pillars ---------- */

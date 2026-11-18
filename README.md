@@ -5,6 +5,7 @@
 | Pattern | Component | Concepts |
 |---|---|---|
 | 01 · 3D tilt hover | `<TiltCard>`, `<TiltLayer>`, `useTilt()` | Custom hook, typed props, refs over state, `requestAnimationFrame`, CSS custom properties, pointer events, reduced motion |
+| 02 · Orbit animation | `<OrbitSystem>` | CSS keyframes, counter-rotation, Web Animations API (`playbackRate`), CSS trig functions, React 19 ref as a prop, data-driven typed props |
 
 ## Run it
 
@@ -24,14 +25,17 @@ React 19 · TypeScript (strict) · Vite · React Router. No UI or animation libr
 src/
   components/
     TiltCard/          reusable component: TiltCard.tsx, useTilt.ts, TiltCard.css
+    OrbitSystem/       reusable component: OrbitSystem.tsx, OrbitSystem.css
     Starfield.tsx      animated canvas background
     Layout.tsx         header, nav, footer
     CodeBlock.tsx      tabbed code viewer
+  data/                shared data (the tech-stack orbits)
   hooks/               shared hooks (usePrefersReducedMotion)
   pages/               Home, Explore (gallery), PatternRoute, 404
   patterns/
     registry.ts        the list of patterns; the gallery and routes read from it
     tilt-hover/        the in-depth page, playground and thumbnail for pattern 01
+    orbit-animation/   the same for pattern 02
 ```
 
 ## Adding a pattern

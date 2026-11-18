@@ -1,34 +1,8 @@
-import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
+import { OrbitSystem } from '../components/OrbitSystem';
+import { TECH_ORBITS } from '../data/techOrbits';
 import { patterns } from '../patterns/registry';
 import '../styles/home.css';
-
-interface Orbit {
-  size: number; // % of the system's width
-  duration: number; // seconds per lap
-  planets: Array<{ label: string; color: string; angle: number }>;
-}
-
-const ORBITS: Orbit[] = [
-  { size: 44, duration: 38, planets: [{ label: 'Components', color: '#5ee0f5', angle: 20 }] },
-  {
-    size: 70,
-    duration: 60,
-    planets: [
-      { label: 'React', color: '#61dafb', angle: 200 },
-      { label: 'Hooks', color: '#ff8ad8', angle: 60 },
-    ],
-  },
-  {
-    size: 96,
-    duration: 90,
-    planets: [
-      { label: 'TypeScript', color: '#4f8cff', angle: 300 },
-      { label: 'CSS', color: '#b9a8ff', angle: 130 },
-      { label: 'Motion', color: '#ffc46b', angle: 220 },
-    ],
-  },
-];
 
 const PILLARS = [
   {
@@ -72,30 +46,11 @@ export function HomePage() {
           </div>
         </div>
 
-        <div className="orbits" aria-hidden="true">
-          <div className="orbits__sun">
-            <span className="mono">&lt;/&gt;</span>
-          </div>
-          {ORBITS.map((orbit) => (
-            <div
-              key={orbit.size}
-              className="orbits__ring"
-              style={{ '--size': `${orbit.size}%`, '--duration': `${orbit.duration}s` } as CSSProperties}
-            >
-              {orbit.planets.map((planet) => (
-                <div
-                  key={planet.label}
-                  className="orbits__arm"
-                  style={{ '--angle': `${planet.angle}deg` } as CSSProperties}
-                >
-                  <div className="orbits__planet" style={{ '--color': planet.color } as CSSProperties}>
-                    <span className="orbits__label">{planet.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
+        <OrbitSystem
+          className="home-orbits"
+          orbits={TECH_ORBITS}
+          center={<span className="home-orbits__mark mono">&lt;/&gt;</span>}
+        />
       </section>
 
       <section className="pillars" aria-label="What you'll find">

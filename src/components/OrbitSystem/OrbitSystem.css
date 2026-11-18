@@ -1,0 +1,134 @@
+/*
+ * How it stays upright: every planet sits inside a chain of transforms.
+ *   plane  scaleY(cos(tilt))      squashes circles into ellipses (a tilted look)
+ *   ring   rotate(spin)           the animation, one lap per --duration
+ *   arm    rotate(angle)          the planet's starting position
+ *   body   rotate(-spin) rotate(-angle) scaleY(1 / cos(tilt))
+ * The body undoes all three, so the dot and label always look the same.
+ *
+ * The tilt is faked in 2D on purpose: a real rotateX makes each planet cross
+ * the orbit plane, and browsers slice it in half where they intersect.
+ */
+
+.orbit-system {
+  --orbit-play: running;
+  --orbit-squash: cos(var(--orbit-tilt, 0deg));
+  --dot-size: 16px;
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.orbit-system[data-paused='true'],
+.orbit-system[data-pause-on-hover='true']:hover {
+  --orbit-play: paused;
+}
+
+.orbit__plane {
+  position: absolute;
+  inset: 0;
+  transform: scaleY(var(--orbit-squash));
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.orbit__center {
+  position: absolute;
+  inset: 39%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff3d6, #ffb35c 35%, #ff6ad5 75%, #8b6cff);
+  box-shadow:
+    0 0 40px rgba(255, 170, 90, 0.55),
+    0 0 120px rgba(255, 106, 213, 0.35);
+  transform: scaleY(calc(1 / var(--orbit-squash)));
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  animation: orbit-pulse 6s ease-in-out infinite;
+  animation-play-state: var(--orbit-play);
+}
+
+/* Centered with inset, not transform, so the spin turns around the middle. */
+.orbit__ring {
+  position: absolute;
+  inset: calc((100% - var(--size)) / 2);
+  border-radius: 50%;
+  border: 1px dashed transparent;
+  animation: orbit-spin var(--duration) linear infinite;
+  animation-play-state: var(--orbit-play);
+  transition: border-color 0.3s ease;
+}
+
+.orbit-system[data-paths='true'] .orbit__ring {
+  border-color: rgba(160, 170, 230, 0.24);
+}
+
+.orbit__arm {
+  position: absolute;
+  inset: 0;
+  transform: rotate(var(--angle));
+}
+
+/* A zero-size point on the ring. Spinning it around itself keeps the label upright. */
+.orbit__body {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: rotate(calc(-1 * var(--angle))) scaleY(calc(1 / var(--orbit-squash)));
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.orbit-system[data-upright='true'] .orbit__body {
+  animation: orbit-spin var(--duration) linear infinite reverse;
+  animation-play-state: var(--orbit-play);
+}
+
+.orbit__dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--dot-size);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--color) 55%);
+  box-shadow: 0 0 18px var(--color);
+  transition: scale 0.25s ease;
+}
+
+.orbit__label {
+  position: absolute;
+  left: 0;
+  top: calc(var(--dot-size) / 2 + 6px);
+  translate: -50% 0;
+  font: 500 13px var(--font-mono, ui-monospace, monospace);
+  color: var(--ink, #fff);
+  white-space: nowrap;
+  text-shadow: 0 1px 8px #05060f;
+  transition: color 0.25s ease;
+}
+
+.orbit__body:hover .orbit__dot {
+  scale: 1.45;
+}
+
+.orbit__body:hover .orbit__label {
+  color: var(--color);
+}
+
+@keyframes orbit-spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes orbit-pulse {
+  50% {
+    box-shadow:
+      0 0 56px rgba(255, 170, 90, 0.7),
+      0 0 160px rgba(255, 106, 213, 0.45);
+  }
+}

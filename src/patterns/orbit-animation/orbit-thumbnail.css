@@ -1,0 +1,54 @@
+.orbit-thumb {
+  position: relative;
+  width: 150px;
+  aspect-ratio: 1;
+}
+
+.orbit-thumb__sun {
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff3d6, #ffb35c 35%, #ff6ad5 80%);
+  box-shadow: 0 0 24px rgba(255, 170, 90, 0.55);
+}
+
+.orbit-thumb__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(160, 170, 230, 0.35);
+  animation: orbit-spin 9s linear infinite;
+}
+
+.orbit-thumb__ring--inner {
+  inset: 18%;
+}
+
+.orbit-thumb__ring--outer {
+  inset: 0;
+  animation-duration: 16s;
+  animation-direction: reverse;
+}
+
+.orbit-thumb__ring i {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  translate: -50% -50%;
+  border-radius: 50%;
+}
+
+.pattern-card:hover .orbit-thumb__ring {
+  animation-duration: 3s;
+}
+
+.pattern-card:hover .orbit-thumb__ring--outer {
+  animation-duration: 5s;
+}
+
+@keyframes orbit-spin {
+  to {
+    rotate: 360deg;
+  }
+}

@@ -1,5 +1,6 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from 'react';
 import { TiltThumbnail } from './tilt-hover/TiltThumbnail';
+import { OrbitThumbnail } from './orbit-animation/OrbitThumbnail';
 
 export interface Pattern {
   /** URL segment: /explore/:slug */
@@ -33,6 +34,17 @@ export const patterns: Pattern[] = [
     added: '2026-11-18',
     Thumbnail: TiltThumbnail,
     Page: lazy(() => import('./tilt-hover/TiltHoverPage')),
+  },
+  {
+    slug: 'orbit-animation',
+    number: '02',
+    title: 'Orbit animation',
+    category: 'Ambient motion · CSS keyframes',
+    summary: 'Planets circle a center on spinning rings while their labels stay upright, thanks to counter-rotation.',
+    tags: ['React', 'TypeScript', 'CSS keyframes', 'Web Animations API'],
+    added: '2026-11-18',
+    Thumbnail: OrbitThumbnail,
+    Page: lazy(() => import('./orbit-animation/OrbitAnimationPage')),
   },
 ];
 

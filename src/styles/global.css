@@ -167,6 +167,9 @@ h3 {
   box-shadow: 0 0 14px rgba(139, 108, 255, 0.7);
 }
 
+/* Saturn's ring, drawn twice: the full ring behind the planet (z-index -1 slips
+   under the planet's own background), then only its front half on top. */
+.brand__planet::before,
 .brand__planet::after {
   content: '';
   position: absolute;
@@ -174,6 +177,14 @@ h3 {
   border: 1.5px solid var(--cyan);
   border-radius: 50%;
   transform: rotate(-20deg);
+}
+
+.brand__planet::before {
+  z-index: -1;
+}
+
+.brand__planet::after {
+  clip-path: inset(50% -2px -2px -2px);
 }
 
 .site-nav {

@@ -1,0 +1,28 @@
+/* Pattern 02 only. Shared stage and controls live in styles/pattern.css. */
+
+.orbit-stage {
+  padding: 32px 16px 56px;
+}
+
+.orbit-demo {
+  --dot-size: 18px;
+  width: min(480px, 100%);
+}
+
+.orbit-demo__mark {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(40, 14, 60, 0.85);
+}
+
+@media (max-width: 640px) {
+  .orbit-demo {
+    --dot-size: 13px;
+  }
+  .orbit-demo .orbit__label {
+    font-size: 11px;
+  }
+  .orbit-demo__mark {
+    font-size: 15px;
+  }
+}
