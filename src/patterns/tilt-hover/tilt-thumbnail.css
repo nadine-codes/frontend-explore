@@ -1,0 +1,45 @@
+.tilt-thumb {
+  perspective: 600px;
+}
+
+.tilt-thumb__card {
+  position: relative;
+  display: grid;
+  gap: 9px;
+  width: 150px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(160deg, #2a2770, #121440);
+  box-shadow: 0 18px 34px rgba(2, 3, 15, 0.55);
+  transform: rotateX(14deg) rotateY(-20deg);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.pattern-card:hover .tilt-thumb__card {
+  transform: rotateX(-8deg) rotateY(16deg);
+}
+
+.tilt-thumb__line {
+  height: 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.tilt-thumb__line--short {
+  width: 55%;
+  background: rgba(94, 224, 245, 0.7);
+}
+
+.tilt-thumb__chip {
+  position: absolute;
+  right: -16px;
+  bottom: -10px;
+  width: 52px;
+  height: 18px;
+  border-radius: 999px;
+  background: #eef0ff;
+  transform: translateZ(30px);
+  box-shadow: 0 6px 14px rgba(2, 3, 15, 0.4);
+}

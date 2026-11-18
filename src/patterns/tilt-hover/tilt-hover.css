@@ -1,0 +1,313 @@
+.playground {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .playground {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Stage ---------- */
+
+.stage {
+  position: relative;
+  min-height: 540px;
+  display: grid;
+  place-items: center;
+  padding: 48px 16px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background:
+    radial-gradient(60% 55% at 25% 15%, rgba(139, 108, 255, 0.55), transparent 70%),
+    radial-gradient(50% 45% at 85% 90%, rgba(255, 122, 217, 0.3), transparent 70%),
+    radial-gradient(40% 40% at 90% 10%, rgba(94, 224, 245, 0.2), transparent 70%),
+    #0a0c22;
+}
+
+/* A planet rim peeking in at the bottom of the stage. */
+.stage::before {
+  content: '';
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  bottom: -88%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0%, rgba(94, 224, 245, 0.35), rgba(20, 24, 60, 0.9) 12%, #070918 40%);
+  box-shadow: 0 -2px 40px rgba(94, 224, 245, 0.35);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .stage {
+    min-height: 460px;
+  }
+}
+
+.stage__hint {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(236, 238, 255, 0.7);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mission-card__wrap {
+  position: relative;
+  width: min(440px, 100%);
+}
+
+.mission-card {
+  padding: 20px 22px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(160deg, #22205a, #101233 70%);
+  box-shadow:
+    0 calc(18px + 14px * var(--tilt-hover, 0)) calc(40px + 24px * var(--tilt-hover, 0)) rgba(2, 3, 15, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  cursor: default;
+  user-select: none;
+}
+
+.mission-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a9b1e6;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.status-pill i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5fe3a1;
+  box-shadow: 0 0 8px #5fe3a1;
+}
+
+.mission-card__rows {
+  margin: 0;
+}
+
+.mission-card__rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
+
+.mission-card__rows dt {
+  color: #a9b1e6;
+}
+
+.mission-card__rows dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.mission-card__rows dd.mono {
+  font-size: 13px;
+  color: var(--cyan);
+}
+
+.float-chip {
+  position: absolute;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: #eef0ff;
+  color: #1c1a4a;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(2, 3, 15, 0.45);
+  pointer-events: none;
+}
+
+.float-chip::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--violet);
+  vertical-align: 1px;
+}
+
+.float-chip--a {
+  top: -16px;
+  left: -22px;
+}
+
+.float-chip--b {
+  bottom: -16px;
+  right: -18px;
+}
+
+.float-chip--c {
+  bottom: -16px;
+  left: -14px;
+}
+
+@media (max-width: 560px) {
+  .float-chip--a {
+    left: -6px;
+  }
+  .float-chip--b {
+    right: -6px;
+  }
+  .float-chip--c {
+    display: none;
+  }
+}
+
+/* ---------- Controls ---------- */
+
+.controls {
+  padding: 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(6px);
+}
+
+.controls__title {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.presets button {
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--ink);
+  font: 500 13.5px var(--font-sans);
+  cursor: pointer;
+}
+
+.presets button:hover {
+  border-color: var(--violet);
+}
+
+.presets button[aria-pressed='true'] {
+  background: var(--violet);
+  border-color: var(--violet);
+  color: #fff;
+}
+
+.slider {
+  display: block;
+  margin: 12px 0;
+  font-size: 13.5px;
+}
+
+.slider__top {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+}
+
+.slider output {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.slider input {
+  width: 100%;
+  accent-color: var(--violet);
+}
+
+.checks {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 4px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.checks label,
+.notice label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checks input,
+.notice input {
+  accent-color: var(--violet);
+}
+
+.notice {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 196, 107, 0.4);
+  background: rgba(255, 196, 107, 0.1);
+  color: #ffe2b0;
+  font-size: 13px;
+}
+
+.readout {
+  display: grid;
+  gap: 2px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--faint);
+}
+
+.readout b {
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
