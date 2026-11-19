@@ -1,0 +1,10 @@
+{
+  "slug": "orbit-animation",
+  "number": "02",
+  "title": "Orbit animation",
+  "category": "Ambient motion · CSS keyframes",
+  "summary": "Planets circle a center on spinning rings while their labels stay upright, thanks to counter-rotation.",
+  "tags": ["React", "TypeScript", "CSS keyframes", "Web Animations API"],
+  "aliases": ["orbital animation", "solar system animation", "orbiting icons", "integrations orbit", "rotating rings", "concentric orbits"],
+  "added": "2026-11-18"
+}

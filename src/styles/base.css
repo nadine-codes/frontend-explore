@@ -1,0 +1,201 @@
+/* Reset, type, and the small shared pieces every page uses. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--fe-bg);
+  color: var(--fe-text);
+  font: var(--fe-text-body) / var(--fe-leading-body) var(--fe-font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--fe-link);
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: var(--fe-tracking-heading);
+  line-height: var(--fe-leading-heading);
+}
+
+code {
+  padding: 0.1em 0.38em;
+  border-radius: 6px;
+  background: var(--fe-tint-code);
+  color: var(--fe-text-inline-code);
+  font-family: var(--fe-font-mono);
+  font-size: 0.88em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fe-focus);
+  outline-offset: 3px;
+}
+
+.mono {
+  font-family: var(--fe-font-mono);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Page frame ---------- */
+
+.fe-page {
+  width: 100%;
+  max-width: var(--fe-page-width);
+  margin: 0 auto;
+  padding: 24px var(--fe-gutter) 40px;
+}
+
+.fe-page-head {
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+
+.fe-page-head h1 {
+  margin: 6px 0 12px;
+  font-size: var(--fe-size-h1);
+}
+
+.fe-kicker {
+  margin: 0;
+  color: var(--fe-cyan);
+  font-family: var(--fe-font-mono);
+  font-size: var(--fe-size-kicker);
+  letter-spacing: var(--fe-tracking-kicker);
+  text-transform: uppercase;
+}
+
+.fe-lede {
+  max-width: 640px;
+  margin: 0;
+  color: var(--fe-text-muted);
+  font-size: var(--fe-size-lede);
+}
+
+.fe-lede b {
+  color: var(--fe-text);
+}
+
+.fe-gradient-text {
+  background: var(--fe-gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Buttons ---------- */
+
+.fe-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 1px solid transparent;
+  border-radius: var(--fe-radius-pill);
+  background: linear-gradient(100deg, var(--fe-violet), var(--fe-violet-deep));
+  box-shadow: var(--fe-shadow-button);
+  color: #fff;
+  font: 600 15px var(--fe-font-sans);
+  text-decoration: none;
+  transition:
+    transform var(--fe-ease-quick),
+    box-shadow var(--fe-ease-quick),
+    border-color var(--fe-ease-quick);
+}
+
+.fe-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--fe-shadow-button-hover);
+}
+
+.fe-button--ghost {
+  border-color: var(--fe-border-strong);
+  background: var(--fe-surface-hover);
+  box-shadow: none;
+}
+
+.fe-button--ghost:hover {
+  border-color: var(--fe-cyan);
+  box-shadow: none;
+}
+
+/* ---------- Tags ---------- */
+
+.fe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fe-tags li {
+  padding: 3px 10px;
+  border: 1px solid var(--fe-border-strong);
+  border-radius: var(--fe-radius-pill);
+  color: var(--fe-text-muted);
+  font-size: 12.5px;
+}
+
+.fe-loading {
+  padding: 120px 16px;
+  color: var(--fe-text-muted);
+  text-align: center;
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- 404 ---------- */
+
+.fe-not-found {
+  padding-top: 80px;
+  text-align: center;
+}
+
+.fe-not-found h1 {
+  margin: 10px 0 14px;
+  font-size: clamp(40px, 8vw, 72px);
+}
+
+.fe-not-found .fe-lede {
+  margin: 0 auto 28px;
+}

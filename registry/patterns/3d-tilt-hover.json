@@ -1,0 +1,10 @@
+{
+  "slug": "3d-tilt-hover",
+  "number": "01",
+  "title": "3D tilt hover",
+  "category": "Hover micro-interaction · motion",
+  "summary": "A card that tips toward your pointer in 3D, with glare and floating layers, then eases back to flat.",
+  "tags": ["React", "TypeScript", "Custom hook", "CSS 3D transforms"],
+  "aliases": ["tilt card", "3D tilt hover effect", "parallax tilt", "perspective hover", "vanilla tilt", "holographic card"],
+  "added": "2026-11-18"
+}

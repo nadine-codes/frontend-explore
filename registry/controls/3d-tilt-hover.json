@@ -1,0 +1,18 @@
+{
+  "pattern": "3d-tilt-hover",
+  "presets": [
+    { "id": "tilt", "label": "Tilt only", "set": { "glare": false, "depth": false } },
+    { "id": "glare", "label": "+ Glare", "set": { "glare": true, "depth": false } },
+    { "id": "depth", "label": "+ Depth", "set": { "glare": false, "depth": true } },
+    { "id": "all", "label": "Everything", "set": { "glare": true, "depth": true } }
+  ],
+  "controls": [
+    { "id": "maxTilt", "type": "range", "label": "Max tilt", "default": 10, "min": 0, "max": 25, "step": 1, "unit": "deg" },
+    { "id": "perspective", "type": "range", "label": "Perspective", "default": 900, "min": 300, "max": 2000, "step": 50, "unit": "px" },
+    { "id": "smoothing", "type": "range", "label": "Smoothing (follow speed)", "default": 0.14, "min": 0.04, "max": 1, "step": 0.02, "decimals": 2 },
+    { "id": "lift", "type": "range", "label": "Lift on hover", "default": 1.02, "min": 1, "max": 1.08, "step": 0.005, "unit": "scale", "decimals": 3 },
+    { "id": "glare", "type": "toggle", "label": "Glare (light follows the pointer)", "default": true },
+    { "id": "depth", "type": "toggle", "label": "Depth (chips float above the card)", "default": true },
+    { "id": "invert", "type": "toggle", "label": "Invert (tilt away from the pointer)", "default": false }
+  ]
+}

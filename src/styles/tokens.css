@@ -1,0 +1,92 @@
+/*
+ * Site tokens, rebuilt from docs/design-notes/v1-vibe.md.
+ * Prefixed --fe- so they never clash with a pattern's own variables.
+ * The site is dark only, like v1.
+ */
+:root {
+  /* Color: surfaces */
+  --fe-bg: #05060f;
+  --fe-bg-raised: #0a0c1d;
+  --fe-surface: rgba(16, 19, 42, 0.72);
+  --fe-surface-faint: rgba(16, 19, 42, 0.35);
+  --fe-surface-solid: #10132a;
+  --fe-surface-bar: rgba(16, 19, 42, 0.8);
+  --fe-surface-code: #070918;
+  --fe-surface-stage: #0a0c22;
+  --fe-surface-thumb: #0c0f26;
+  --fe-surface-hover: rgba(255, 255, 255, 0.04);
+
+  /* Color: lines */
+  --fe-border: rgba(160, 170, 230, 0.16);
+  --fe-border-strong: rgba(160, 170, 230, 0.3);
+
+  /* Color: text */
+  --fe-text: #eceeff;
+  --fe-text-muted: #a3abd1;
+  --fe-text-faint: #6f78a3;
+  --fe-text-code: #d6dcff;
+  --fe-text-inline-code: #d9d0ff;
+
+  /* Color: accents */
+  --fe-violet: #8b6cff;
+  --fe-violet-deep: #6a4de6;
+  --fe-cyan: #5ee0f5;
+  --fe-pink: #ff7ad9;
+  --fe-amber: #ffc46b;
+  --fe-green: #5fe3a1;
+  --fe-accent: var(--fe-violet);
+  --fe-focus: var(--fe-cyan);
+  --fe-link: var(--fe-cyan);
+
+  /* Violet tints */
+  --fe-tint-code: rgba(139, 108, 255, 0.14);
+  --fe-tint-active: rgba(139, 108, 255, 0.18);
+  --fe-tint-selected: rgba(139, 108, 255, 0.2);
+  --fe-tint-pressed: rgba(139, 108, 255, 0.25);
+  --fe-tint-border: rgba(139, 108, 255, 0.4);
+  --fe-tint-hover-border: rgba(139, 108, 255, 0.55);
+
+  /* Type */
+  --fe-font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fe-font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --fe-text-body: 16px;
+  --fe-leading-body: 1.6;
+  --fe-leading-heading: 1.1;
+  --fe-tracking-heading: -0.02em;
+  --fe-tracking-kicker: 0.14em;
+  --fe-size-hero: clamp(42px, 7vw, 80px);
+  --fe-size-h1: clamp(34px, 6vw, 56px);
+  --fe-size-h2: clamp(24px, 3.4vw, 32px);
+  --fe-size-lede: clamp(16px, 2vw, 18.5px);
+  --fe-size-kicker: 12px;
+  --fe-gradient-text: linear-gradient(100deg, var(--fe-cyan), var(--fe-violet) 50%, var(--fe-pink));
+
+  /* Layout */
+  --fe-page-width: 1120px;
+  --fe-gutter: 24px;
+  --fe-section-gap: 56px;
+
+  /* Radius */
+  --fe-radius-xs: 8px;
+  --fe-radius-sm: 10px;
+  --fe-radius-md: 14px;
+  --fe-radius-lg: 18px;
+  --fe-radius-xl: 22px;
+  --fe-radius-pill: 999px;
+
+  /* Shadow */
+  --fe-shadow-button: 0 8px 30px rgba(139, 108, 255, 0.35);
+  --fe-shadow-button-hover: 0 12px 36px rgba(139, 108, 255, 0.5);
+
+  /* Motion */
+  --fe-ease-quick: 0.2s ease;
+  --fe-ease-settle: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color-scheme: dark;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --fe-gutter: 16px;
+  }
+}

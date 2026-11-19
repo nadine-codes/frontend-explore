@@ -1,8 +1,8 @@
 import { Link } from 'react-router';
-import { OrbitSystem } from '../components/OrbitSystem';
-import { TECH_ORBITS } from '../data/techOrbits';
-import { patterns } from '../patterns/registry';
-import '../styles/home.css';
+import { patterns } from '../lib/registry';
+import { OrbitSystem } from '../patterns/orbit-animation/OrbitSystem';
+import { TECH_ORBITS } from '../patterns/orbit-animation/techOrbits';
+import './home.css';
 
 const PILLARS = [
   {
@@ -20,26 +20,29 @@ const PILLARS = [
 ];
 
 export function HomePage() {
-  const latest = patterns[patterns.length - 1];
+  const latest = patterns.at(-1);
+  const count = patterns.length;
 
   return (
-    <div className="page home">
-      <section className="hero">
-        <div className="hero__copy">
-          <p className="kicker mono">Mission log · {patterns.length} pattern{patterns.length === 1 ? '' : 's'} charted</p>
-          <h1>
-            Explore the <span className="gradient-text">frontend universe</span>
-          </h1>
-          <p className="lede">
-            A collection of interaction patterns rebuilt with React, TypeScript and reusable components. Play with each one,
-            then look inside to see how it's made.
+    <div className="fe-page fe-home">
+      <section className="fe-hero">
+        <div className="fe-hero__copy">
+          <p className="fe-kicker">
+            Mission log · {count} pattern{count === 1 ? '' : 's'} charted
           </p>
-          <div className="hero__actions">
-            <Link className="button" to="/explore">
+          <h1>
+            Explore the <span className="fe-gradient-text">frontend universe</span>
+          </h1>
+          <p className="fe-lede">
+            A collection of interaction patterns rebuilt with React, TypeScript and reusable components. Play with each
+            one, then look inside to see how it's made.
+          </p>
+          <div className="fe-hero__actions">
+            <Link className="fe-button" to="/explore">
               Start exploring
             </Link>
             {latest && (
-              <Link className="button button--ghost" to={`/explore/${latest.slug}`}>
+              <Link className="fe-button fe-button--ghost" to={`/explore/${latest.slug}`}>
                 Latest: {latest.title}
               </Link>
             )}
@@ -47,16 +50,16 @@ export function HomePage() {
         </div>
 
         <OrbitSystem
-          className="home-orbits"
+          className="fe-hero__orbits"
           orbits={TECH_ORBITS}
-          center={<span className="home-orbits__mark mono">&lt;/&gt;</span>}
+          center={<span className="fe-hero__mark mono">&lt;/&gt;</span>}
         />
       </section>
 
-      <section className="pillars" aria-label="What you'll find">
+      <section className="fe-pillars" aria-label="What you'll find">
         {PILLARS.map((pillar, index) => (
-          <article key={pillar.title} className="pillar">
-            <span className="pillar__index mono">0{index + 1}</span>
+          <article key={pillar.title} className="fe-pillar">
+            <span className="fe-pillar__index mono">0{index + 1}</span>
             <h2>{pillar.title}</h2>
             <p>{pillar.body}</p>
           </article>
