@@ -25,7 +25,7 @@ export function ExplorePage() {
                   <div className="fe-card__thumb">{Thumbnail && <Thumbnail />}</div>
                   <div className="fe-card__body">
                     <p className="fe-card__meta mono">
-                      {pattern.number} · {pattern.category}
+                      {pattern.number} · {pattern.label}
                     </p>
                     <h2>{pattern.title}</h2>
                     <p>{pattern.summary}</p>

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
-import type { PatternRecord } from '../../lib/registry';
+import { noteSection, type PatternRecord } from '../../lib/registry';
+import { linkTarget, Markdown } from '../../lib/Markdown';
 import './pattern.css';
 
 /** Shared pieces of every pattern page. A pattern's page composes these in order. */
@@ -16,7 +17,7 @@ export function PatternHeader({ pattern, children }: { pattern: PatternRecord; c
         ← Star map
       </Link>
       <p className="fe-kicker">
-        Pattern {pattern.number} · {pattern.category}
+        Pattern {pattern.number} · {pattern.label}
       </p>
       <h1>{pattern.title}</h1>
       <p className="fe-lede">{children}</p>
@@ -96,5 +97,77 @@ export function ConceptGrid({ items }: { items: Array<{ name: string; body: stri
         </li>
       ))}
     </ul>
+  );
+}
+
+/** Keyboard, screen reader, reduced motion and touch notes, read from the pattern's note. */
+export function AccessibilitySection({ pattern }: { pattern: PatternRecord }) {
+  const source = noteSection(pattern.slug, 'Accessibility');
+  if (!source) return null;
+  return (
+    <section className="fe-section" aria-labelledby={`${pattern.slug}-a11y`}>
+      <h2 id={`${pattern.slug}-a11y`}>Accessibility</h2>
+      <p>
+        WCAG criteria to check: <WcagList criteria={pattern.wcag} />
+      </p>
+      <Markdown source={source} className="fe-prose fe-prose--bullets" />
+    </section>
+  );
+}
+
+const WCAG_NAMES: Record<string, string> = {
+  '2.1.1': 'Keyboard',
+  '2.1.2': 'No Keyboard Trap',
+  '2.2.2': 'Pause, Stop, Hide',
+  '2.3.3': 'Animation from Interactions',
+  '2.4.3': 'Focus Order',
+  '2.4.7': 'Focus Visible',
+  '2.5.1': 'Pointer Gestures',
+  '4.1.2': 'Name, Role, Value',
+  '4.1.3': 'Status Messages',
+};
+
+function WcagList({ criteria }: { criteria: string[] }) {
+  return (
+    <>
+      {criteria.map((id, index) => (
+        <span key={id}>
+          {index > 0 && ', '}
+          <b>
+            {id} {WCAG_NAMES[id] ?? ''}
+          </b>
+        </span>
+      ))}
+    </>
+  );
+}
+
+/** Authored links: the concepts this pattern uses and the patterns it pairs or clashes with. */
+export function RelatedSection({ pattern }: { pattern: PatternRecord }) {
+  const groups = [
+    { title: 'Concepts', ids: pattern.concepts },
+    { title: 'Pairs well with', ids: pattern.pairs_with },
+    { title: 'Clashes with', ids: pattern.clashes_with },
+  ].filter((group) => group.ids.length > 0);
+
+  return (
+    <section className="fe-section">
+      <h2>Related</h2>
+      <div className="fe-related">
+        {groups.map((group) => (
+          <div key={group.title}>
+            <h3 className="fe-related__title">{group.title}</h3>
+            <ul className="fe-chips" role="list">
+              {group.ids.map((id) => {
+                const target = linkTarget(id);
+                return (
+                  <li key={id}>{target ? <Link to={target.href}>{target.title}</Link> : <span>{id}</span>}</li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

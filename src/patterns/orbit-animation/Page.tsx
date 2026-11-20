@@ -3,6 +3,8 @@ import { controlsFor, findPattern } from '../../lib/registry';
 import { defaultSettings, read, type Settings } from '../../playground/manifest';
 import { CodeTabs } from '../../playground/CodeTabs';
 import {
+  AccessibilitySection,
+  RelatedSection,
   Bullets,
   ConceptGrid,
   PatternArticle,
@@ -242,11 +244,14 @@ export default function OrbitAnimationPage() {
             'Keep it slow. A lap of 40–90 seconds reads as calm; under 10 seconds feels like a loading spinner.',
             'Give outer rings longer durations than inner ones. It looks natural because real orbits work that way.',
             'Keep labels upright with counter-rotation. Rotating text is hard to read and looks broken.',
-            'It runs forever, so it needs an off switch: respect reduced motion, and consider pause on hover so people can read the labels.',
             'Use it once, as a hero visual. Next to other moving things it competes for attention.',
           ]}
         />
       </Section>
+
+      <AccessibilitySection pattern={pattern} />
+
+      <RelatedSection pattern={pattern} />
 
       <Section title="Seen in the wild">
         <p>

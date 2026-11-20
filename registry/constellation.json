@@ -1,0 +1,223 @@
+{
+  "nodes": [
+    {
+      "id": "3d-tilt-hover",
+      "type": "pattern",
+      "title": "3D tilt hover",
+      "wcag": [
+        "2.3.3",
+        "2.5.1"
+      ]
+    },
+    {
+      "id": "orbit-animation",
+      "type": "pattern",
+      "title": "Orbit animation",
+      "wcag": [
+        "2.2.2",
+        "2.3.3"
+      ]
+    },
+    {
+      "id": "ambient-motion",
+      "type": "concept",
+      "title": "Ambient motion"
+    },
+    {
+      "id": "counter-rotation",
+      "type": "concept",
+      "title": "Counter-rotation"
+    },
+    {
+      "id": "css-custom-properties",
+      "type": "concept",
+      "title": "CSS custom properties"
+    },
+    {
+      "id": "css-keyframes",
+      "type": "concept",
+      "title": "CSS keyframes"
+    },
+    {
+      "id": "custom-hook",
+      "type": "concept",
+      "title": "Custom hook"
+    },
+    {
+      "id": "decorative-aria-hidden",
+      "type": "concept",
+      "title": "Decoration and aria-hidden"
+    },
+    {
+      "id": "pointer-events",
+      "type": "concept",
+      "title": "Pointer events"
+    },
+    {
+      "id": "reduced-motion",
+      "type": "concept",
+      "title": "Reduced motion"
+    },
+    {
+      "id": "refs-over-state",
+      "type": "concept",
+      "title": "Refs over state"
+    },
+    {
+      "id": "requestanimationframe",
+      "type": "concept",
+      "title": "requestAnimationFrame"
+    },
+    {
+      "id": "usesyncexternalstore-media-query",
+      "type": "concept",
+      "title": "Media query hook"
+    },
+    {
+      "id": "web-animations-api",
+      "type": "concept",
+      "title": "Web Animations API"
+    }
+  ],
+  "edges": [
+    {
+      "from": "3d-tilt-hover",
+      "to": "custom-hook",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "3d-tilt-hover",
+      "to": "refs-over-state",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "3d-tilt-hover",
+      "to": "requestanimationframe",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "3d-tilt-hover",
+      "to": "css-custom-properties",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "3d-tilt-hover",
+      "to": "pointer-events",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "3d-tilt-hover",
+      "to": "reduced-motion",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "3d-tilt-hover",
+      "to": "usesyncexternalstore-media-query",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "3d-tilt-hover",
+      "to": "decorative-aria-hidden",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "3d-tilt-hover",
+      "to": "orbit-animation",
+      "type": "pairs_with",
+      "status": "authored"
+    },
+    {
+      "from": "orbit-animation",
+      "to": "css-keyframes",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "orbit-animation",
+      "to": "counter-rotation",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "orbit-animation",
+      "to": "web-animations-api",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "orbit-animation",
+      "to": "css-custom-properties",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "orbit-animation",
+      "to": "reduced-motion",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "orbit-animation",
+      "to": "usesyncexternalstore-media-query",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "orbit-animation",
+      "to": "decorative-aria-hidden",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "orbit-animation",
+      "to": "ambient-motion",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "ambient-motion",
+      "to": "reduced-motion",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "counter-rotation",
+      "to": "css-keyframes",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "custom-hook",
+      "to": "refs-over-state",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "reduced-motion",
+      "to": "usesyncexternalstore-media-query",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "refs-over-state",
+      "to": "css-custom-properties",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "refs-over-state",
+      "to": "requestanimationframe",
+      "type": "link",
+      "status": "authored"
+    }
+  ],
+  "gaps": []
+}

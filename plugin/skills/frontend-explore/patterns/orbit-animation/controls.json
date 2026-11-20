@@ -1,0 +1,26 @@
+{
+  "pattern": "orbit-animation",
+  "presets": [
+    { "id": "flat", "label": "Flat", "set": { "tilt": 0, "uprightLabels": true } },
+    { "id": "tilted", "label": "3D tilt", "set": { "tilt": 62, "uprightLabels": true } },
+    { "id": "broken", "label": "No counter-spin", "set": { "tilt": 0, "uprightLabels": false } }
+  ],
+  "controls": [
+    { "id": "speed", "type": "range", "label": "Speed", "default": 1, "min": 0, "max": 4, "step": 0.05, "unit": "multiplier", "decimals": 2 },
+    { "id": "tilt", "type": "range", "label": "3D tilt", "default": 0, "min": 0, "max": 80, "step": 1, "unit": "deg" },
+    {
+      "id": "direction",
+      "type": "choice",
+      "label": "Direction",
+      "default": "clockwise",
+      "options": [
+        { "value": "clockwise", "label": "↻ Clockwise" },
+        { "value": "counterclockwise", "label": "↺ Counter" }
+      ]
+    },
+    { "id": "uprightLabels", "type": "toggle", "label": "Counter-rotate labels (keep upright)", "default": true },
+    { "id": "showPaths", "type": "toggle", "label": "Show orbit paths", "default": true },
+    { "id": "pauseOnHover", "type": "toggle", "label": "Pause on hover", "default": false },
+    { "id": "paused", "type": "toggle", "label": "Paused", "default": false, "display": "button", "onLabel": "▶ Play", "offLabel": "❚❚ Pause" }
+  ]
+}

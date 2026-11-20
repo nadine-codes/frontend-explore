@@ -1,0 +1,32 @@
+/* The wrapper sets the camera distance; the card rotates inside it. */
+.tilt {
+  perspective: var(--tilt-perspective, 900px);
+}
+
+.tilt__card {
+  position: relative;
+  transform: rotateX(var(--tilt-rx, 0deg)) rotateY(var(--tilt-ry, 0deg)) scale(var(--tilt-scale, 1));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Light that follows the pointer. Its opacity is 0 until hovered. */
+.tilt__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--tilt-glare-o, 0);
+  background: radial-gradient(
+    circle at var(--tilt-glare-x, 50%) var(--tilt-glare-y, 50%),
+    rgba(255, 255, 255, 0.38),
+    rgba(255, 255, 255, 0) 55%
+  );
+  mix-blend-mode: soft-light;
+}
+
+/* Floats above the card in 3D space. */
+.tilt__layer {
+  transform: translateZ(var(--tilt-depth, 0px));
+  transition: transform 0.35s ease;
+}

@@ -398,3 +398,78 @@
   color: inherit;
   font-size: inherit;
 }
+
+/* ---------- Rendered notes ---------- */
+
+.fe-prose {
+  max-width: 820px;
+  color: var(--fe-text-muted);
+}
+
+.fe-prose p {
+  margin: 0 0 14px;
+}
+
+.fe-prose a {
+  color: var(--fe-cyan);
+}
+
+.fe-prose strong {
+  color: var(--fe-text);
+}
+
+.fe-prose ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.fe-prose li {
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.fe-prose li::marker {
+  color: var(--fe-cyan);
+}
+
+/* ---------- Related ---------- */
+
+.fe-related {
+  display: grid;
+  gap: 18px;
+}
+
+.fe-related__title {
+  margin: 0 0 8px;
+  color: var(--fe-text-muted);
+  font-family: var(--fe-font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: var(--fe-tracking-kicker);
+  text-transform: uppercase;
+}
+
+.fe-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fe-chips a,
+.fe-chips span {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--fe-border-strong);
+  border-radius: var(--fe-radius-pill);
+  background: var(--fe-surface);
+  color: var(--fe-text);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.fe-chips a:hover {
+  border-color: var(--fe-cyan);
+}

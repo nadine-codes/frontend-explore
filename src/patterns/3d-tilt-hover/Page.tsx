@@ -3,6 +3,8 @@ import { controlsFor, findPattern } from '../../lib/registry';
 import { defaultSettings, read, type Settings } from '../../playground/manifest';
 import { CodeTabs } from '../../playground/CodeTabs';
 import {
+  AccessibilitySection,
+  RelatedSection,
   Bullets,
   ConceptGrid,
   PatternArticle,
@@ -207,8 +209,6 @@ export default function TiltHoverPage() {
           <Bullets
             items={[
               'Keep the angle under about 12°. Bigger angles make text hard to read and feel gimmicky.',
-              'Respect reduced motion: the card stays flat and keeps only the subtle lift.',
-              'Touch has no hover. Tilt only while a finger drags (as here), or skip it on touch.',
               'Use it on one hero element, not every card. It stops standing out when everything moves.',
               <>
                 Animate only <code>transform</code> and opacity so it stays smooth.
@@ -217,6 +217,10 @@ export default function TiltHoverPage() {
           />
         </SubSection>
       </SectionPair>
+
+      <AccessibilitySection pattern={pattern} />
+
+      <RelatedSection pattern={pattern} />
 
       <Section title="Seen in the wild">
         <p>

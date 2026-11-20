@@ -13,12 +13,14 @@ function GitHubIcon() {
 }
 
 export function SiteLayout() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
-  // A new route starts at the top.
+  // A new route starts at the top, unless it points at an anchor such as /docs/glossary#reduced-motion.
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+    if (target) target.scrollIntoView();
+    else window.scrollTo(0, 0);
+  }, [pathname, hash]);
 
   const { start, separator, end } = SITE.wordmark;
 
@@ -40,10 +42,11 @@ export function SiteLayout() {
           </span>
         </NavLink>
         <nav className="fe-nav" aria-label="Main">
-          <NavLink to="/" end>
+          <NavLink to="/" end className="fe-nav__home">
             Home
           </NavLink>
           <NavLink to="/explore">Explore</NavLink>
+          <NavLink to="/docs">Docs</NavLink>
           <a href={SITE.githubUrl} target="_blank" rel="noreferrer" className="fe-nav__icon" aria-label="Source on GitHub">
             <GitHubIcon />
           </a>

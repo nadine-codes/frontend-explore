@@ -137,6 +137,11 @@
     padding: 6px 9px;
     font-size: 13.5px;
   }
+
+  /* No room for four links on phones. The logo already goes home. */
+  .fe-nav__home {
+    display: none;
+  }
 }
 
 /* ---------- Footer ---------- */

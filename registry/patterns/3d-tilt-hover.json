@@ -2,9 +2,21 @@
   "slug": "3d-tilt-hover",
   "number": "01",
   "title": "3D tilt hover",
-  "category": "Hover micro-interaction · motion",
+  "category": "motion",
+  "label": "Hover micro-interaction · motion",
   "summary": "A card that tips toward your pointer in 3D, with glare and floating layers, then eases back to flat.",
   "tags": ["React", "TypeScript", "Custom hook", "CSS 3D transforms"],
   "aliases": ["tilt card", "3D tilt hover effect", "parallax tilt", "perspective hover", "vanilla tilt", "holographic card"],
-  "added": "2026-11-18"
+  "added": "2026-11-18",
+  "code": { "dir": "src/patterns/3d-tilt-hover/TiltCard", "import": "TiltCard, TiltLayer" },
+  "concepts": ["custom-hook", "refs-over-state", "requestanimationframe", "css-custom-properties", "pointer-events", "reduced-motion", "usesyncexternalstore-media-query", "decorative-aria-hidden"],
+  "wcag": ["2.3.3", "2.5.1"],
+  "sources": [{ "title": "MDN: perspective", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/perspective" }],
+  "mood": ["playful", "techy"],
+  "best_sections": ["hero"],
+  "cost": { "weight": "light", "mobile_risk": "low" },
+  "use_when": "One hero element should feel physical",
+  "avoid_when": "Every card on a page, or touch screens without drag",
+  "pairs_with": ["orbit-animation"],
+  "clashes_with": []
 }
