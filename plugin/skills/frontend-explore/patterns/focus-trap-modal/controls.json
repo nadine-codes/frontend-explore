@@ -1,0 +1,30 @@
+{
+  "pattern": "focus-trap-modal",
+  "presets": [
+    { "id": "confirm", "label": "Confirm", "set": { "kind": "confirm", "size": "small", "closeOnBackdrop": false } },
+    { "id": "form", "label": "Form", "set": { "kind": "form", "size": "medium", "closeOnBackdrop": true } }
+  ],
+  "controls": [
+    {
+      "id": "kind",
+      "type": "choice",
+      "label": "Content",
+      "default": "form",
+      "options": [
+        { "value": "form", "label": "Rename form" },
+        { "value": "confirm", "label": "Delete confirm" }
+      ]
+    },
+    {
+      "id": "size",
+      "type": "choice",
+      "label": "Size",
+      "default": "medium",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" }
+      ]
+    },
+    { "id": "closeOnBackdrop", "type": "toggle", "label": "Close when the backdrop is clicked", "default": true }
+  ]
+}

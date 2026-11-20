@@ -1,0 +1,22 @@
+{
+  "pattern": "combobox",
+  "presets": [
+    { "id": "forgiving", "label": "Forgiving", "set": { "matchMode": "contains", "autoHighlight": true } },
+    { "id": "strict", "label": "Strict", "set": { "matchMode": "startsWith", "autoHighlight": false } }
+  ],
+  "controls": [
+    { "id": "maxResults", "type": "range", "label": "Most results", "default": 8, "min": 3, "max": 12, "step": 1 },
+    {
+      "id": "matchMode",
+      "type": "choice",
+      "label": "Match",
+      "default": "contains",
+      "options": [
+        { "value": "contains", "label": "Contains" },
+        { "value": "startsWith", "label": "Starts with" }
+      ]
+    },
+    { "id": "autoHighlight", "type": "toggle", "label": "Highlight the first result (Enter picks it)", "default": true },
+    { "id": "highlightMatch", "type": "toggle", "label": "Underline the matching letters", "default": true }
+  ]
+}

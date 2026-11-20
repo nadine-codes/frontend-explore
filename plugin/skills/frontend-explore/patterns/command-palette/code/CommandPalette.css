@@ -1,0 +1,109 @@
+/*
+ * The palette is a Modal (see focus-trap-modal) with a combobox inside.
+ * Theme it with the modal variables plus:
+ *   --palette-accent, --palette-active-bg, --palette-muted
+ */
+
+.palette {
+  --modal-width: 600px;
+  /* Sit near the top, like most palettes, so the list can grow downward. */
+  margin-top: min(14vh, 120px);
+}
+
+.palette .modal__panel {
+  padding: 0;
+}
+
+.palette__input {
+  width: 100%;
+  padding: 18px 20px;
+  border: 0;
+  border-bottom: 1px solid var(--modal-border, rgba(160, 170, 230, 0.3));
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 17px;
+}
+
+.palette__input:focus-visible {
+  outline: 2px solid var(--palette-accent, #5ee0f5);
+  outline-offset: -2px;
+}
+
+.palette__list {
+  max-height: min(380px, 55dvh);
+  padding: 8px;
+  overflow-y: auto;
+}
+
+.palette__group {
+  padding: 10px 10px 4px;
+  color: var(--palette-muted, #a3abd1);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.palette__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.palette__option[aria-selected='true'] {
+  background: var(--palette-active-bg, rgba(139, 108, 255, 0.25));
+  box-shadow: inset 3px 0 0 var(--palette-accent, #5ee0f5);
+}
+
+.palette__option mark {
+  background: none;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.palette__keys {
+  display: flex;
+  gap: 4px;
+}
+
+.palette kbd {
+  min-width: 22px;
+  padding: 2px 6px;
+  border: 1px solid var(--modal-border, rgba(160, 170, 230, 0.3));
+  border-radius: 6px;
+  color: var(--palette-muted, #a3abd1);
+  font: 500 12px ui-monospace, Menlo, monospace;
+  text-align: center;
+}
+
+.palette__empty {
+  margin: 0;
+  padding: 16px 12px;
+  color: var(--palette-muted, #a3abd1);
+}
+
+.palette__footer {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 10px 16px;
+  border-top: 1px solid var(--modal-border, rgba(160, 170, 230, 0.3));
+  color: var(--palette-muted, #a3abd1);
+  font-size: 12.5px;
+}
+
+.palette__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

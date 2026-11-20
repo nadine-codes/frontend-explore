@@ -11,4 +11,4 @@ Every animation in the library has a still version. In CSS, check the media quer
 
 The still version should keep the meaning, not just stop. A tilt card stays flat but keeps its subtle lift. An orbit holds its planets in place so the labels stay readable.
 
-Used by: [[3d-tilt-hover]], [[orbit-animation]].
+Used by: [[3d-tilt-hover]], [[orbit-animation]], [[focus-trap-modal]] (no fade or rise), [[command-palette]] (through its modal).

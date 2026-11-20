@@ -31,7 +31,8 @@ interface PatternRecord {
   title: string;
   category: string;
   summary: string;
-  code: { dir: string; import: string };
+  /** deps: files from other patterns this code imports. They are bundled next to it. */
+  code: { dir: string; import: string; deps?: string[] };
   concepts: string[];
   wcag: string[];
   mood: string[];
@@ -102,6 +103,7 @@ for (const p of patterns) {
   if (!note) fail(`${where}: missing registry/patterns/${p.slug}.md`);
   if (!controls.has(p.slug)) fail(`${where}: missing registry/controls/${p.slug}.json`);
   if (!existsSync(join(ROOT, p.code.dir))) fail(`${where}: code folder ${p.code.dir} not found`);
+  for (const dep of p.code.deps ?? []) if (!existsSync(join(ROOT, dep))) fail(`${where}: code dep ${dep} not found`);
   if (p.concepts.length === 0) fail(`${where}: links to no concepts`);
   for (const c of p.concepts) if (!concepts.has(c)) fail(`${where}: concept "${c}" has no note`);
   for (const s of [...p.pairs_with, ...p.clashes_with]) if (!slugs.has(s)) fail(`${where}: pairs/clashes slug "${s}" not found`);
@@ -183,15 +185,25 @@ for (const p of patterns) {
   copyFileSync(join(REG, 'patterns', `${p.slug}.json`), join(out, 'pattern.json'));
   copyFileSync(join(REG, 'controls', `${p.slug}.json`), join(out, 'controls.json'));
 
-  // Drop-in code must stand alone, so the shared hook travels with it.
+  // Drop-in code must stand alone: the shared hook and any files from other patterns
+  // travel with it, and their imports are rewritten to point next door.
+  const sources = [
+    ...readdirSync(join(ROOT, p.code.dir)).sort().map((f) => join(ROOT, p.code.dir, f)),
+    ...(p.code.deps ?? []).map((d) => join(ROOT, d)),
+  ];
+  const depNames = (p.code.deps ?? []).map((d) => basename(d).replace(/\.(tsx?|css)$/, ''));
   let needsHook = false;
-  for (const file of readdirSync(join(ROOT, p.code.dir)).sort()) {
-    let text = readFileSync(join(ROOT, p.code.dir, file), 'utf8');
+  for (const file of sources) {
+    let text = readFileSync(file, 'utf8');
     if (/from '(\.\.\/)+lib\/usePrefersReducedMotion'/.test(text)) {
       text = text.replace(/from '(\.\.\/)+lib\/usePrefersReducedMotion'/g, "from './usePrefersReducedMotion'");
       needsHook = true;
     }
-    writeFileSync(join(codeOut, file), text);
+    text = text.replace(/from '(\.\.\/[^']*\/)([\w-]+)'/g, (whole, _dir: string, name: string) =>
+      depNames.includes(name) ? `from './${name}'` : whole,
+    );
+    if (/from '\.\.\//.test(text)) fail(`pattern ${p.slug}: ${basename(file)} still imports outside its folder`);
+    writeFileSync(join(codeOut, basename(file)), text);
   }
   if (needsHook) writeFileSync(join(codeOut, 'usePrefersReducedMotion.ts'), hookSource);
 }

@@ -1,0 +1,68 @@
+.palette-thumb {
+  display: grid;
+  gap: 5px;
+  width: 200px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: linear-gradient(160deg, #2a2770, #121440);
+  box-shadow: 0 18px 34px rgba(2, 3, 15, 0.6);
+  transition: scale 0.4s ease;
+}
+
+.fe-card:hover .palette-thumb {
+  scale: 1.04;
+}
+
+.palette-thumb__input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 26px;
+  padding: 0 8px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.palette-thumb__input i {
+  width: 60px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.palette-thumb__input b {
+  padding: 1px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: #a9b1e6;
+  font: 600 9px ui-monospace, monospace;
+}
+
+.palette-thumb__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 6px;
+}
+
+.palette-thumb__row i {
+  width: 80px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.palette-thumb__row b {
+  width: 22px;
+  height: 9px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.palette-thumb__row--active {
+  background: rgba(139, 108, 255, 0.45);
+  box-shadow: inset 3px 0 0 #5ee0f5;
+}

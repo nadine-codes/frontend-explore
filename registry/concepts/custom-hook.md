@@ -8,3 +8,5 @@ summary: Put reusable stateful logic in a function that starts with "use", so an
 A custom hook is a function whose name starts with `use` and that calls other hooks. It lets several components share behavior without sharing markup.
 
 `useTilt()` holds all the pointer math and the animation loop for [[3d-tilt-hover]], and returns a ref. Any element that takes the ref can tilt. It pairs with [[refs-over-state]] to stay fast.
+
+`useCombobox()` holds the filtering, keyboard handling and ARIA wiring for [[combobox]], and [[command-palette]] reuses it with different markup.

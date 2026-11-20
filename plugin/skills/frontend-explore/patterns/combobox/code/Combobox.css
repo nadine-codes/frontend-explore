@@ -1,0 +1,98 @@
+/*
+ * Theme it with these variables. Each falls back to a dark default.
+ *   --combobox-bg, --combobox-text, --combobox-muted, --combobox-border,
+ *   --combobox-accent, --combobox-active-bg, --combobox-radius
+ */
+
+.combobox {
+  position: relative;
+  width: 100%;
+}
+
+.combobox__label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--combobox-muted, #a3abd1);
+  font-size: 13.5px;
+}
+
+.combobox__input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--combobox-border, rgba(160, 170, 230, 0.3));
+  border-radius: var(--combobox-radius, 12px);
+  background: var(--combobox-bg, #10132a);
+  color: var(--combobox-text, #eceeff);
+  font: inherit;
+}
+
+.combobox__input:focus-visible {
+  outline: 2px solid var(--combobox-accent, #5ee0f5);
+  outline-offset: 2px;
+}
+
+.combobox__list {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  left: 0;
+  z-index: 10;
+  max-height: 300px;
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  border: 1px solid var(--combobox-border, rgba(160, 170, 230, 0.3));
+  border-radius: var(--combobox-radius, 12px);
+  background: var(--combobox-bg, #10132a);
+  box-shadow: 0 18px 40px rgba(2, 3, 15, 0.55);
+  list-style: none;
+}
+
+.combobox__list[hidden] {
+  display: none;
+}
+
+.combobox__option {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: calc(var(--combobox-radius, 12px) - 4px);
+  color: var(--combobox-text, #eceeff);
+  cursor: pointer;
+}
+
+/* The active option is the one Enter would pick. It must be visible without color alone. */
+.combobox__option[aria-selected='true'] {
+  background: var(--combobox-active-bg, rgba(139, 108, 255, 0.25));
+  box-shadow: inset 3px 0 0 var(--combobox-accent, #5ee0f5);
+}
+
+.combobox__option mark {
+  background: none;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.combobox__hint {
+  flex: none;
+  color: var(--combobox-muted, #a3abd1);
+  font-size: 13px;
+}
+
+.combobox__empty {
+  padding: 9px 10px;
+  color: var(--combobox-muted, #a3abd1);
+}
+
+/* Read by screen readers, invisible on screen. */
+.combobox__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

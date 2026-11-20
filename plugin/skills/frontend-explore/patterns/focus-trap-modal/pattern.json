@@ -1,0 +1,25 @@
+{
+  "slug": "focus-trap-modal",
+  "number": "03",
+  "title": "Focus-trapped modal",
+  "category": "overlay",
+  "label": "Overlay · focus management",
+  "summary": "A dialog that keeps focus inside while open, closes with Esc, and hands focus back to whatever opened it.",
+  "tags": ["React", "TypeScript", "Native dialog", "Focus management"],
+  "aliases": ["modal dialog", "dialog box", "lightbox", "popup", "overlay"],
+  "added": "2026-11-20",
+  "code": { "dir": "src/patterns/focus-trap-modal/Modal", "import": "Modal" },
+  "concepts": ["native-dialog", "focus-management", "keyboard-navigation", "reduced-motion", "css-custom-properties"],
+  "wcag": ["2.1.2", "2.4.3", "4.1.2"],
+  "sources": [
+    { "title": "MDN: <dialog>", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" },
+    { "title": "WAI-ARIA APG: Dialog (Modal) pattern", "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" }
+  ],
+  "mood": ["focused"],
+  "best_sections": ["dialog"],
+  "cost": { "weight": "light", "mobile_risk": "low" },
+  "use_when": "A short task must be finished or dismissed before going back, such as confirming a delete or a two-field form",
+  "avoid_when": "Long forms, content people want to compare with the page, or anything that could be its own page or an inline message",
+  "pairs_with": ["combobox"],
+  "clashes_with": []
+}

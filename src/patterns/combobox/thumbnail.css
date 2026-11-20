@@ -1,0 +1,70 @@
+.combo-thumb {
+  display: grid;
+  gap: 6px;
+  width: 170px;
+}
+
+.combo-thumb__input {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #5ee0f5;
+  border-radius: 9px;
+  background: #121440;
+}
+
+.combo-thumb__input i {
+  width: 34px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.combo-thumb__input i::after {
+  content: '';
+  display: block;
+  width: 1.5px;
+  height: 14px;
+  margin: -4px 0 0 38px;
+  background: #5ee0f5;
+  animation: combo-thumb-caret 1.1s steps(1) infinite;
+}
+
+.combo-thumb__list {
+  display: grid;
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9px;
+  background: linear-gradient(160deg, #2a2770, #121440);
+  box-shadow: 0 14px 28px rgba(2, 3, 15, 0.5);
+}
+
+.combo-thumb__row {
+  height: 18px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.07);
+  transition: background 0.3s ease;
+}
+
+.combo-thumb__row--active {
+  background: rgba(139, 108, 255, 0.45);
+  box-shadow: inset 3px 0 0 #5ee0f5;
+}
+
+.fe-card:hover .combo-thumb__row--active {
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: none;
+}
+
+.fe-card:hover .combo-thumb__row:nth-child(2) {
+  background: rgba(139, 108, 255, 0.45);
+  box-shadow: inset 3px 0 0 #5ee0f5;
+}
+
+@keyframes combo-thumb-caret {
+  50% {
+    opacity: 0;
+  }
+}

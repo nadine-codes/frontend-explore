@@ -1,0 +1,21 @@
+{
+  "pattern": "command-palette",
+  "presets": [
+    { "id": "grouped", "label": "Grouped", "set": { "showGroups": true } },
+    { "id": "flat", "label": "Flat list", "set": { "showGroups": false } }
+  ],
+  "controls": [
+    {
+      "id": "matchMode",
+      "type": "choice",
+      "label": "Match",
+      "default": "contains",
+      "options": [
+        { "value": "contains", "label": "Contains" },
+        { "value": "startsWith", "label": "Starts with" }
+      ]
+    },
+    { "id": "showGroups", "type": "toggle", "label": "Show group headings", "default": true },
+    { "id": "closeOnRun", "type": "toggle", "label": "Close after running a command", "default": true }
+  ]
+}

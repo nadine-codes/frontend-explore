@@ -1,0 +1,101 @@
+/*
+ * Theme it with these variables. Each falls back to a dark default.
+ *   --modal-bg, --modal-text, --modal-muted, --modal-border, --modal-radius,
+ *   --modal-backdrop, --modal-font
+ */
+
+.modal {
+  width: min(var(--modal-width, 560px), calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  border: 1px solid var(--modal-border, rgba(160, 170, 230, 0.3));
+  border-radius: var(--modal-radius, 18px);
+  background: var(--modal-bg, #10132a);
+  color: var(--modal-text, #eceeff);
+  font-family: var(--modal-font, inherit);
+  box-shadow: 0 30px 80px rgba(2, 3, 15, 0.6);
+
+  /* Open and close: fade and rise. Closing works because display and overlay transition discretely. */
+  opacity: 0;
+  translate: 0 12px;
+  transition:
+    opacity 0.2s ease,
+    translate 0.2s ease,
+    overlay 0.2s allow-discrete,
+    display 0.2s allow-discrete;
+}
+
+.modal--small {
+  --modal-width: 400px;
+}
+
+.modal[open] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@starting-style {
+  .modal[open] {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+.modal::backdrop {
+  background: var(--modal-backdrop, rgba(5, 6, 15, 0.7));
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    overlay 0.2s allow-discrete,
+    display 0.2s allow-discrete;
+}
+
+.modal[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .modal[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+/* The page behind cannot scroll while a modal is open. */
+html:has(.modal[open]) {
+  overflow: hidden;
+}
+
+.modal__panel {
+  padding: 24px;
+}
+
+.modal__title {
+  margin: 0 0 6px;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.modal__title--hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.modal__description {
+  margin: 0 0 18px;
+  color: var(--modal-muted, #a3abd1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal::backdrop {
+    translate: none;
+    transition: none;
+  }
+}

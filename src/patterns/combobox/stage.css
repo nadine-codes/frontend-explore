@@ -1,0 +1,33 @@
+/* Pattern 04 playground only. The combobox's own styles live in Combobox/Combobox.css. */
+
+/* The list drops down inside the stage, so pin the card near the top. */
+.combobox-stage {
+  align-items: start;
+  padding-top: 72px;
+}
+
+.combobox-stage__card {
+  position: relative;
+  z-index: 1;
+  width: min(380px, 100%);
+}
+
+.combobox-stage__picked {
+  margin: 14px 0 0;
+  color: var(--fe-text-muted);
+  font-size: 14px;
+}
+
+.combobox-stage__picked b {
+  color: var(--fe-text);
+}
+
+/* The site maps the combobox's theme variables to its own tokens. */
+.combobox {
+  --combobox-bg: var(--fe-surface-solid);
+  --combobox-text: var(--fe-text);
+  --combobox-muted: var(--fe-text-muted);
+  --combobox-border: var(--fe-border-strong);
+  --combobox-accent: var(--fe-cyan);
+  --combobox-active-bg: var(--fe-tint-pressed);
+}

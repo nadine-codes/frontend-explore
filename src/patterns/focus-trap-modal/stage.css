@@ -1,0 +1,95 @@
+/* Pattern 03 playground only. The modal's own styles live in Modal/Modal.css. */
+
+.modal-stage__card {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  width: min(360px, 100%);
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: linear-gradient(160deg, #22205a, #101233 70%);
+  box-shadow: 0 24px 50px rgba(2, 3, 15, 0.6);
+}
+
+.modal-stage__label {
+  margin: 0;
+  color: #a9b1e6;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.modal-stage__name {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.modal-stage__result {
+  min-height: 1.6em;
+  margin: 6px 0 0;
+  color: var(--fe-cyan);
+  font-size: 13.5px;
+}
+
+.modal-stage__open,
+.modal-stage__primary,
+.modal-stage__secondary,
+.modal-stage__danger {
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font: 600 14.5px var(--fe-font-sans);
+  cursor: pointer;
+}
+
+.modal-stage__open,
+.modal-stage__primary {
+  background: var(--fe-violet);
+  color: #fff;
+}
+
+.modal-stage__secondary {
+  border-color: var(--fe-border-strong);
+  background: transparent;
+  color: var(--fe-text);
+}
+
+.modal-stage__danger {
+  background: #e5484d;
+  color: #fff;
+}
+
+.modal-stage__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.modal-stage__field {
+  display: grid;
+  gap: 6px;
+  color: var(--fe-text-muted);
+  font-size: 13.5px;
+}
+
+.modal-stage__field input {
+  padding: 11px 13px;
+  border: 1px solid var(--fe-border-strong);
+  border-radius: 10px;
+  background: var(--fe-bg-raised);
+  color: var(--fe-text);
+  font: inherit;
+  font-size: 16px;
+}
+
+/* The site maps the modal's theme variables to its own tokens. */
+.modal {
+  --modal-bg: var(--fe-surface-solid);
+  --modal-text: var(--fe-text);
+  --modal-muted: var(--fe-text-muted);
+  --modal-border: var(--fe-border-strong);
+  --modal-font: var(--fe-font-sans);
+}

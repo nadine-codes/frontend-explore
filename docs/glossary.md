@@ -22,6 +22,18 @@ Rules: keep it slow, use it once per page, and give it an off switch. Moving con
 
 [[orbit-animation]] is ambient motion. It becomes an interaction once it responds to the visitor, for example by pausing on hover.
 
+<a id="aria-activedescendant"></a>
+
+## aria-activedescendant
+
+# aria-activedescendant
+
+In a combobox, focus must stay in the input so people can keep typing. But arrow keys also move through the options. `aria-activedescendant` solves this: the input points at the id of the active option, and screen readers announce that option as if it had focus.
+
+The active option needs a visible style too, and it should not rely on color alone.
+
+Used by: [[combobox]], [[command-palette]]. Related: [[keyboard-navigation]], [[live-region]].
+
 <a id="counter-rotation"></a>
 
 ## Counter-rotation
@@ -41,6 +53,8 @@ When a parent rotates, its children rotate with it. To move something around a c
 Custom properties (`--name: value`) are variables that cascade like any CSS property. JavaScript can set them on an element, and CSS can use them anywhere below it.
 
 This splits the work cleanly. In [[3d-tilt-hover]], JavaScript sets `--tilt-rx` and `--tilt-ry` and the stylesheet owns the transform. In [[orbit-animation]], one variable, `--orbit-play`, pauses every animation at once.
+
+[[focus-trap-modal]], [[combobox]] and [[command-palette]] expose theme variables such as `--modal-bg` and `--combobox-accent`, each with a dark default.
 
 Patterns in this library style themselves through custom properties, so a product's own colors and spacing can replace the defaults.
 
@@ -64,6 +78,8 @@ A custom hook is a function whose name starts with `use` and that calls other ho
 
 `useTilt()` holds all the pointer math and the animation loop for [[3d-tilt-hover]], and returns a ref. Any element that takes the ref can tilt. It pairs with [[refs-over-state]] to stay fast.
 
+`useCombobox()` holds the filtering, keyboard handling and ARIA wiring for [[combobox]], and [[command-palette]] reuses it with different markup.
+
 <a id="decorative-aria-hidden"></a>
 
 ## Decoration and aria-hidden
@@ -74,7 +90,55 @@ Some elements exist only to look good: a glare, a moving planet. A screen reader
 
 Two options. Hide decoration with `aria-hidden="true"`. Or, when the visual carries meaning, give the whole thing one description with `role="img"` and an `aria-label`, and hide the parts.
 
-[[3d-tilt-hover]] hides its glare. [[orbit-animation]] is announced as one image when it has a label, and is hidden entirely when it does not.
+[[3d-tilt-hover]] hides its glare. [[command-palette]] hides its key hints, which only repeat what the keyboard already does. [[orbit-animation]] is announced as one image when it has a label, and is hidden entirely when it does not.
+
+<a id="focus-management"></a>
+
+## Focus management
+
+# Focus management
+
+Keyboard and screen reader users are wherever focus is. When something opens, move focus into it. When it closes, return focus to the control that opened it, so nobody is dropped at the top of the page.
+
+Pick the first focus on purpose. In a form, focus the first field. In a destructive confirm, focus the safe choice (Cancel), not Delete.
+
+Used by: [[focus-trap-modal]], [[command-palette]]. Related: [[native-dialog]], [[keyboard-navigation]].
+
+<a id="global-shortcut"></a>
+
+## Global keyboard shortcut
+
+# Global keyboard shortcut
+
+A global shortcut listens on the window. Use a modifier (Cmd on Mac, Ctrl elsewhere) so it never fires while someone is typing, and call `preventDefault` so the browser's own action does not also run.
+
+Avoid combinations the browser or screen readers already use, such as Cmd+P or Ctrl+Option. Always offer a visible button too: phones have no Cmd key, and shortcuts are hard to discover.
+
+Used by: [[command-palette]].
+
+<a id="keyboard-navigation"></a>
+
+## Keyboard navigation
+
+# Keyboard navigation
+
+People who cannot or do not use a mouse rely on a small set of keys: Tab to move between controls, Enter or Space to act, arrow keys inside a widget, Esc to back out.
+
+Follow the conventions in the ARIA Authoring Practices. Inside a list, arrows move and Tab leaves. Esc closes the innermost thing first. Never make Tab the only way through a long list.
+
+Used by: [[focus-trap-modal]], [[combobox]], [[command-palette]]. Related: [[focus-management]], [[aria-activedescendant]].
+
+<a id="live-region"></a>
+
+## Live region
+
+# Live region
+
+A live region is an element whose text changes are read aloud. `role="status"` is polite: it waits until the screen reader is quiet.
+
+Use it for results counts, saved messages and other changes away from focus. Keep messages short, and update them only when something meaningful changes.
+
+Used by: [[combobox]], [[command-palette]].
 
 <a id="usesyncexternalstore-media-query"></a>
 
@@ -87,6 +151,18 @@ Two options. Hide decoration with `aria-hidden="true"`. Or, when the visual carr
 `usePrefersReducedMotion()` subscribes to `(prefers-reduced-motion: reduce)` and returns a boolean. Components re-render when the visitor changes the setting, with no effect or state of their own.
 
 It is the React side of [[reduced-motion]]. Used by: [[3d-tilt-hover]], [[orbit-animation]].
+
+<a id="native-dialog"></a>
+
+## Native dialog
+
+# Native dialog
+
+`<dialog>` is the browser's own dialog element. Opened with `showModal()`, it sits in the top layer above everything, draws a `::backdrop`, and makes the rest of the page inert: it cannot be clicked, focused or read by a screen reader until the dialog closes.
+
+That replaces most hand-written focus-trap code. Esc fires a `cancel` event, so the app can decide whether to close. The browser still lets Tab reach its own toolbar. [[focus-trap-modal]] wraps Tab inside the dialog instead, so focus cycles through its controls; Esc is always the way out, so it is never a keyboard trap.
+
+Used by: [[focus-trap-modal]], [[command-palette]]. See [[focus-management]] for where focus goes in and out.
 
 <a id="pointer-events"></a>
 
@@ -112,7 +188,7 @@ Every animation in the library has a still version. In CSS, check the media quer
 
 The still version should keep the meaning, not just stop. A tilt card stays flat but keeps its subtle lift. An orbit holds its planets in place so the labels stay readable.
 
-Used by: [[3d-tilt-hover]], [[orbit-animation]].
+Used by: [[3d-tilt-hover]], [[orbit-animation]], [[focus-trap-modal]] (no fade or rise), [[command-palette]] (through its modal).
 
 <a id="refs-over-state"></a>
 

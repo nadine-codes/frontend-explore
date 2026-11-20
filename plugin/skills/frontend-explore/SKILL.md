@@ -15,6 +15,7 @@ Files in this skill:
 - `patterns/<slug>/controls.json`: every setting with its default and range.
 - `concepts/<id>.md`: shared ideas the pattern notes link to with `[[id]]`.
 - `rules/`: type, spacing, color and copy guides.
+- `recipes/`: short plans by project type. Start with `recipes/landing-page.md` for a landing page.
 
 ## If a selection file exists
 

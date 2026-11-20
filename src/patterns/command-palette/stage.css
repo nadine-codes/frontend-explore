@@ -1,0 +1,126 @@
+/* Pattern 05 playground only. The palette's own styles live in CommandPalette/. */
+
+.palette-stage__app {
+  position: relative;
+  z-index: 1;
+  width: min(460px, 100%);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: linear-gradient(160deg, #22205a, #101233 70%);
+  box-shadow: 0 24px 50px rgba(2, 3, 15, 0.6);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.palette-stage__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12.5px;
+}
+
+.palette-stage__search {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid var(--fe-border-strong);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  font: 500 13px var(--fe-font-sans);
+  cursor: pointer;
+}
+
+.palette-stage__search:hover {
+  border-color: var(--fe-cyan);
+}
+
+.palette-stage__search kbd {
+  padding: 1px 5px;
+  border: 1px solid var(--fe-border-strong);
+  border-radius: 5px;
+  font: 500 11.5px var(--fe-font-mono);
+}
+
+.palette-stage__body {
+  display: grid;
+  gap: 4px;
+  min-height: 180px;
+  padding: 26px 18px;
+  text-align: center;
+  align-content: center;
+}
+
+.palette-stage__body p {
+  margin: 0;
+}
+
+.palette-stage__count {
+  font-size: 18px;
+}
+
+.palette-stage__count b {
+  font-size: 34px;
+  font-variant-numeric: tabular-nums;
+}
+
+.palette-stage__hint {
+  color: #a9b1e6;
+  font-size: 12px;
+}
+
+.palette-stage__log {
+  min-height: 1.6em;
+  margin-top: 10px !important;
+  color: var(--fe-cyan);
+  font-size: 13.5px;
+}
+
+/* "Toggle light cockpit" */
+.palette-stage--light .palette-stage__app {
+  background: linear-gradient(160deg, #f4f2ff, #dcdcf7 70%);
+  color: #17153d;
+}
+
+.palette-stage--light .palette-stage__hint {
+  color: #4d4a87;
+}
+
+.palette-stage--light .palette-stage__log {
+  color: #2a55a8;
+}
+
+/* "Toggle star trails": streaks across the stage. Off under reduced motion. */
+.palette-stage--trails::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(115deg, transparent 0 46px, rgba(255, 255, 255, 0.06) 46px 47px);
+  animation: palette-trails 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes palette-trails {
+  to {
+    background-position: 200px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .palette-stage--trails::after {
+    animation: none;
+  }
+}
+
+/* The site maps the palette's theme variables to its own tokens. */
+.palette {
+  --palette-accent: var(--fe-cyan);
+  --palette-active-bg: var(--fe-tint-pressed);
+  --palette-muted: var(--fe-text-muted);
+}

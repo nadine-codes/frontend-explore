@@ -19,9 +19,45 @@
       ]
     },
     {
+      "id": "focus-trap-modal",
+      "type": "pattern",
+      "title": "Focus-trapped modal",
+      "wcag": [
+        "2.1.2",
+        "2.4.3",
+        "4.1.2"
+      ]
+    },
+    {
+      "id": "combobox",
+      "type": "pattern",
+      "title": "Combobox",
+      "wcag": [
+        "2.1.1",
+        "4.1.2",
+        "4.1.3"
+      ]
+    },
+    {
+      "id": "command-palette",
+      "type": "pattern",
+      "title": "Command palette",
+      "wcag": [
+        "2.1.1",
+        "2.4.3",
+        "4.1.2",
+        "4.1.3"
+      ]
+    },
+    {
       "id": "ambient-motion",
       "type": "concept",
       "title": "Ambient motion"
+    },
+    {
+      "id": "aria-activedescendant",
+      "type": "concept",
+      "title": "aria-activedescendant"
     },
     {
       "id": "counter-rotation",
@@ -47,6 +83,31 @@
       "id": "decorative-aria-hidden",
       "type": "concept",
       "title": "Decoration and aria-hidden"
+    },
+    {
+      "id": "focus-management",
+      "type": "concept",
+      "title": "Focus management"
+    },
+    {
+      "id": "global-shortcut",
+      "type": "concept",
+      "title": "Global keyboard shortcut"
+    },
+    {
+      "id": "keyboard-navigation",
+      "type": "concept",
+      "title": "Keyboard navigation"
+    },
+    {
+      "id": "live-region",
+      "type": "concept",
+      "title": "Live region"
+    },
+    {
+      "id": "native-dialog",
+      "type": "concept",
+      "title": "Native dialog"
     },
     {
       "id": "pointer-events",
@@ -183,8 +244,146 @@
       "status": "authored"
     },
     {
+      "from": "focus-trap-modal",
+      "to": "native-dialog",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "focus-trap-modal",
+      "to": "focus-management",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "focus-trap-modal",
+      "to": "keyboard-navigation",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "focus-trap-modal",
+      "to": "reduced-motion",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "focus-trap-modal",
+      "to": "css-custom-properties",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "focus-trap-modal",
+      "to": "combobox",
+      "type": "pairs_with",
+      "status": "authored"
+    },
+    {
+      "from": "combobox",
+      "to": "custom-hook",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "combobox",
+      "to": "aria-activedescendant",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "combobox",
+      "to": "keyboard-navigation",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "combobox",
+      "to": "live-region",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "combobox",
+      "to": "css-custom-properties",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "global-shortcut",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "native-dialog",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "focus-management",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "aria-activedescendant",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "keyboard-navigation",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "live-region",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "custom-hook",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "reduced-motion",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "decorative-aria-hidden",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
+      "from": "command-palette",
+      "to": "css-custom-properties",
+      "type": "concept",
+      "status": "authored"
+    },
+    {
       "from": "ambient-motion",
       "to": "reduced-motion",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "aria-activedescendant",
+      "to": "keyboard-navigation",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "aria-activedescendant",
+      "to": "live-region",
       "type": "link",
       "status": "authored"
     },
@@ -197,6 +396,18 @@
     {
       "from": "custom-hook",
       "to": "refs-over-state",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "focus-management",
+      "to": "native-dialog",
+      "type": "link",
+      "status": "authored"
+    },
+    {
+      "from": "focus-management",
+      "to": "keyboard-navigation",
       "type": "link",
       "status": "authored"
     },

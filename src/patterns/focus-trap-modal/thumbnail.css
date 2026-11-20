@@ -1,0 +1,64 @@
+.modal-thumb {
+  position: relative;
+  width: 190px;
+  height: 130px;
+}
+
+.modal-thumb__page {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(transparent 0 18px, rgba(255, 255, 255, 0.08) 18px 25px) 14px 16px / 60% 100% no-repeat,
+    rgba(5, 6, 15, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-thumb__dialog {
+  position: absolute;
+  top: 26px;
+  left: 35px;
+  display: grid;
+  gap: 8px;
+  width: 120px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: linear-gradient(160deg, #2a2770, #121440);
+  box-shadow: 0 18px 34px rgba(2, 3, 15, 0.6);
+  transition: translate 0.4s ease;
+}
+
+.fe-card:hover .modal-thumb__dialog {
+  translate: 0 -6px;
+}
+
+.modal-thumb__line {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.modal-thumb__line--title {
+  width: 60%;
+  background: rgba(94, 224, 245, 0.7);
+}
+
+.modal-thumb__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.modal-thumb__buttons i {
+  width: 28px;
+  height: 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-thumb__buttons i:last-child {
+  border-color: #8b6cff;
+  background: #8b6cff;
+}

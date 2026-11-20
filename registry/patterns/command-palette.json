@@ -1,0 +1,33 @@
+{
+  "slug": "command-palette",
+  "number": "05",
+  "title": "Command palette",
+  "category": "navigation",
+  "label": "Navigation · keyboard",
+  "summary": "Press Cmd+K, type a few letters, press Enter. Every action and page, one shortcut away.",
+  "tags": ["React", "TypeScript", "Keyboard shortcut", "Combobox in a dialog"],
+  "aliases": ["Cmd+K menu", "command menu", "quick open", "command bar", "spotlight search"],
+  "added": "2026-11-20",
+  "code": {
+    "dir": "src/patterns/command-palette/CommandPalette",
+    "import": "CommandPalette",
+    "deps": [
+      "src/patterns/focus-trap-modal/Modal/Modal.tsx",
+      "src/patterns/focus-trap-modal/Modal/Modal.css",
+      "src/patterns/combobox/Combobox/useCombobox.ts"
+    ]
+  },
+  "concepts": ["global-shortcut", "native-dialog", "focus-management", "aria-activedescendant", "keyboard-navigation", "live-region", "custom-hook", "reduced-motion", "decorative-aria-hidden", "css-custom-properties"],
+  "wcag": ["2.1.1", "2.4.3", "4.1.2", "4.1.3"],
+  "sources": [
+    { "title": "WAI-ARIA APG: Combobox pattern", "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" },
+    { "title": "WAI-ARIA APG: Dialog (Modal) pattern", "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" }
+  ],
+  "mood": ["techy", "focused"],
+  "best_sections": ["app", "docs"],
+  "cost": { "weight": "light", "mobile_risk": "medium" },
+  "use_when": "An app or docs site with many actions or pages that keyboard users jump between",
+  "avoid_when": "Simple marketing pages, or as the only way to reach something (it must not hide features)",
+  "pairs_with": [],
+  "clashes_with": []
+}

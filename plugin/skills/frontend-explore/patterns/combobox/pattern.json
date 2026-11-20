@@ -1,0 +1,25 @@
+{
+  "slug": "combobox",
+  "number": "04",
+  "title": "Combobox",
+  "category": "input",
+  "label": "Form input · keyboard",
+  "summary": "A text field that filters a list as you type. Arrow keys move, Enter picks, and screen readers follow along.",
+  "tags": ["React", "TypeScript", "Custom hook", "ARIA combobox"],
+  "aliases": ["autocomplete", "autosuggest", "typeahead", "searchable select", "filterable dropdown"],
+  "added": "2026-11-20",
+  "code": { "dir": "src/patterns/combobox/Combobox", "import": "Combobox, useCombobox" },
+  "concepts": ["custom-hook", "aria-activedescendant", "keyboard-navigation", "live-region", "css-custom-properties"],
+  "wcag": ["2.1.1", "4.1.2", "4.1.3"],
+  "sources": [
+    { "title": "WAI-ARIA APG: Combobox pattern", "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" },
+    { "title": "MDN: aria-activedescendant", "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-activedescendant" }
+  ],
+  "mood": ["focused"],
+  "best_sections": ["form", "search"],
+  "cost": { "weight": "light", "mobile_risk": "medium" },
+  "use_when": "Picking one value from a long list (more than about 10 options) where typing is faster than scrolling",
+  "avoid_when": "Short lists (use radio buttons or a native select), or free text that is not a choice from a list",
+  "pairs_with": ["focus-trap-modal"],
+  "clashes_with": []
+}

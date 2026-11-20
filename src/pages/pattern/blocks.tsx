@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
-import { noteSection, type PatternRecord } from '../../lib/registry';
+import { findConcept, noteSection, type PatternRecord } from '../../lib/registry';
 import { linkTarget, Markdown } from '../../lib/Markdown';
 import './pattern.css';
 
@@ -143,12 +143,13 @@ function WcagList({ criteria }: { criteria: string[] }) {
 }
 
 /** Authored links: the concepts this pattern uses and the patterns it pairs or clashes with. */
-export function RelatedSection({ pattern }: { pattern: PatternRecord }) {
+export function RelatedSection({ pattern, showConcepts = true }: { pattern: PatternRecord; showConcepts?: boolean }) {
   const groups = [
-    { title: 'Concepts', ids: pattern.concepts },
+    { title: 'Concepts', ids: showConcepts ? pattern.concepts : [] },
     { title: 'Pairs well with', ids: pattern.pairs_with },
     { title: 'Clashes with', ids: pattern.clashes_with },
   ].filter((group) => group.ids.length > 0);
+  if (groups.length === 0) return null;
 
   return (
     <section className="fe-section">
@@ -168,6 +169,41 @@ export function RelatedSection({ pattern }: { pattern: PatternRecord }) {
           </div>
         ))}
       </div>
+    </section>
+  );
+}
+
+/** A "## Heading" section of the pattern's note, rendered as is. */
+export function NoteSection({ pattern, heading, title = heading }: { pattern: PatternRecord; heading: string; title?: string }) {
+  const source = noteSection(pattern.slug, heading);
+  if (!source) return null;
+  return (
+    <section className="fe-section">
+      <h2>{title}</h2>
+      <Markdown source={source} className="fe-prose" />
+    </section>
+  );
+}
+
+/** The concept tiles, filled from the concept notes so they never drift from the glossary. */
+export function ConceptNotes({ pattern }: { pattern: PatternRecord }) {
+  const items = pattern.concepts.flatMap((id) => {
+    const concept = findConcept(id);
+    return concept ? [concept] : [];
+  });
+  return (
+    <section className="fe-section">
+      <h2>Front-end concepts in this pattern</h2>
+      <ul className="fe-concepts" role="list">
+        {items.map((concept) => (
+          <li key={concept.id}>
+            <h3 className="mono">
+              <Link to={`/docs/glossary#${concept.id}`}>{concept.title}</Link>
+            </h3>
+            <p>{concept.summary}</p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
